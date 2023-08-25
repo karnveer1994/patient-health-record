@@ -1,38 +1,338 @@
-.App {
+.navbar-container {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: #ffffff; 
+}
+.main-container{
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  position: sticky;
+}
+.main-navbar{
+   border-bottom: 2px solid #a2b3bd;
+}
+.logo-health{
+  width: 200px;
+  height: 100px;
+  margin: 0px;
+  border-radius: 5px;
+}
+
+.navbar-upper{
+  display: flex;
+  list-style-type: none;
+  padding-top: 8px;
+}
+.navbar-upper > ul{
+  font-size: 15px;
+}
+.navbar-upper > ul a{
+  padding-right: 10px;
+  text-decoration: none;
+  color: #657b86;
+}
+
+.navbar-middle{
+  display: flex;
+  list-style-type: none;
+  float: right;
+}
+.navbar-middle > ul{
+  font-size: 16px;
+}
+.navbar-middle > ul a{
+  padding-right: 20px;
+  text-decoration: none;
+  color:#657b86;
+}
+/* ............................Footer Part........................................ */
+.footer-container{
+  background-color: rgb(215, 238, 247);
+  margin-top: 70px;
+  display: flex;
+  height: 320px;
+  border-top: 1px solid rgb(185, 181, 181);
+  border-bottom: 1px solid rgb(185, 181, 181);
+}
+.footer-menu{
+  padding-left: 5px;
+}
+.footer-menu > ul > li{
+  list-style-type: none;
+}
+.footer-link{
+  text-decoration:none;
+  font-size: 15PX;
+  color:#657b86;
+}
+.footer-heading{
+  padding: 10px 35px;
+}
+.footer-heading a{
+  font-size: 18px;
+  color:#657b86;
+  text-decoration: none;
+}
+.social-container{
+  background-color: rgb(215, 238, 247);
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 2px solid rgb(185, 181, 181);
+}
+.copyright{
+  height: 50px;
+  padding-top: 20px;
+}
+.fa {
+  padding: 15px;
+  font-size: 25px;
+  width: 50px;
   text-align: center;
+  text-decoration: none;
+}
+.fa:hover {
+  opacity: 0.5;
+}
+.container{
+  width: 45% !important; 
+  height: 100%;
+  margin: auto;
+}
+/* RegistrationForm.css */
+.registration-form-container {
+  width: 45%;
+
+ /* Light background color */
+
+  border-radius: 8px;
+  /* //box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.1); */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Update your other CSS styles here */
+
+
+.forms-title{
+ margin-top: 20px;
+ padding-top: 20px;
+ color: #a6a8aa;
+ text-align: center;
+}
+.form-label-bold {
+  color: #686b6d;
+  font-weight: 300;
+  font-size: 14px ;
+}
+.mui{
+  width: 50%;
+  margin :auto
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* App.css */
+
+/* Your existing CSS */
+
+/* Additional styles for text and button overlay */
+.carousel {
+  position: relative;
+  width: 100%;
+  height: 450px;
+  overflow: hidden;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.carousel-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.main-image {
+  position: absolute;
+  opacity: 1;
+  z-index: 2;
+}
+
+.image-scroll {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+.slider {
+  max-width: 800px; /* Adjust this value as needed */
+  margin: 0 auto;
+}
+
+/* Overlay styles for text and button */
+.carousel-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  opacity: 0;
+  transition: opacity 0.5s;
+  z-index: 3; /* Ensure the overlay is above the image */
+}
+
+/* Show overlay on hover */
+.carousel:hover .carousel-overlay {
+  opacity: 1;
+}
+
+/* Styling for the text in the overlay */
+.carousel-overlay h2 {
+  margin-bottom: 10px;
+  font-size: 18px; /* Adjust the font size as needed */
+  font-weight: 600;
+  text-align: center;
+  color: rgb(93, 158, 167);
+}
+.carousel-overlay h1 {
+  margin-bottom: 10px;
+  font-weight: 400;
+  text-align: center;
+  color: rgb(93, 158, 167);
+  font-family: sans-serif;
+}
+
+/* Styling for the button in the overlay */
+.carousel-overlay button {
+  width: 200px;
+  padding: 5px 15px;
+  background-color: #73828d;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  font-size: 16px; /* Adjust the font size as needed */
+  border-radius: 5px;
+  outline: none;
+}
+.carousel-overlay button:hover{
+  background-color: #424f96;
+  color:#ffffff;
+}
+
+/* Your existing CSS */
+.reputation_container {
+  padding: 40px;
+}
+.boost{
+  color: rgb(93, 158, 167);
+  font-weight: 400;
+}
+.amplify{
+  color: rgb(118, 133, 118);
+  font-weight: 300;
+  margin-top: 40px;
+}
+.aggregate{
+  color: rgb(118, 133, 118);
+  font-weight: 300;
+  margin-top: 40px;
+  font-size: 20px;
+  margin-bottom: 40px;
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.patient {
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.sponser {
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.learn-more-button {
+  /* Style the Learn More button */
+  text-decoration: none;
+  font-size: 22px;
+  color: rgb(116, 194, 218);
+  font-weight: 600;
+}
+
+.sponsers-image {
+  /* Style the sponsor's image */
+  max-width: 100%;
+  height: auto;
+}
+.automate_container {
+  margin: 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+}
+.learn-button {
+  margin-top: 20px;
+  text-decoration: none;
+  font-size: 22px;
+  color: rgb(116, 194, 218);
+  font-weight: 600;
+}
+.auto_head{
+ text-align: center;
+ padding-top: 10px;
+ color: rgb(93, 158, 167);
+ font-weight: 400;
+}
+.content_head{
+  text-align: center;
+ padding-top: 10px;
+ color: rgb(105, 119, 110);
+ font-weight: 300;
+}
+.para_head{
+  text-align: center;
+ padding-top: 10px;
+ color: rgb(105, 119, 110);
+ font-weight: 300;
+ font-size: 20px;
+}
+.department_container {
+  display: flex;
+  justify-content: center;
 }
 
-.App-link {
-  color: #61dafb;
+.circle-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px; /* Adjust the gap as needed */
+  max-width: 800px; /* Adjust the max-width as needed */
+  margin: 0 auto;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.department-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 150px; /* Set a fixed height for consistent alignment */
 }
+
+.department-icon {
+  width: 100px; /* Adjust the image size as needed */
+  height: 100px;
+}
+
+.department-name {
+  margin-top: 10px; /* Adjust the margin as needed */
+  text-align: center;
+}
+
