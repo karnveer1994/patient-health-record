@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+
+import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -12,39 +13,32 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useNavigate } from 'react-router-dom';
 
-interface FormData {
-  get: (field: string) => string | null;
-}
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://phr.com/">
-        Patient Health Record
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
+function isValidEmail(email: string): boolean {
+  return /\S+@\S+\.\S+/.test(email); // Basic email validation
 }
 
 const defaultTheme = createTheme();
 
 export default function SignIn() {
-  const [token, setToken] = useState('');
- 
- 
- 
+  const navigate = useNavigate();
+  const [emailError, setEmailError] = React.useState(false);
+
+  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const email = event.target.value;
+    setEmailError(!isValidEmail(email));
+  };
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const email = data.get('email');
     const password = data.get('password');
 
+    // Make API call to authenticate user
     try {
-      const response = await fetch('/login', {
+      const response = await fetch('/api/auth/sign_in', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -54,15 +48,14 @@ export default function SignIn() {
 
       if (response.ok) {
         const responseData = await response.json();
-        const authToken = responseData.token; // Adjust this based on your API response
-        setToken(authToken); // Save token in state
-        localStorage.setItem('token', authToken); // Save token in localStorage
-        console.log('Login successful');
+        // Handle successful authentication, e.g., store tokens, navigate to dashboard
+        navigate('/dashboard');
       } else {
-        console.log('Login failed');
+        // Handle authentication error, e.g., display error message
+        console.error('Authentication failed');
       }
     } catch (error) {
-      console.error('An error occurred', error);
+      console.error('API error:', error);
     }
   };
   return (
@@ -93,6 +86,9 @@ export default function SignIn() {
               name="email"
               autoComplete="email"
               autoFocus
+               error={emailError}
+              onChange={handleEmailChange}
+              helperText={emailError ? 'Invalid email address' : ''}
             />
             <TextField
               margin="normal"
@@ -118,21 +114,18 @@ export default function SignIn() {
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link href="#" variant="body2">
+                <Link href="/forgotpassword" variant="body2">
                   Forgot password?
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
-                  <a className="nav-link" href="/signup">
-                    {"Don't have an account? Sign Up"}
-                  </a>
-                </Link>
+                {/* <Link href="#" variant="body2">
+                  {"Don't have an account? Sign Up"}
+                </Link> */}
               </Grid>
             </Grid>
           </Box>
         </Box>
-        <Copyright />
       </Container>
     </ThemeProvider>
   );

@@ -1,33 +1,20 @@
-import './App.css';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './components/home/Home';
-import SignIn from './components/sign-in/SignIn';
-import SignUp from './components/sign-up/SignUp';
-import Stepper from "./components/stepper/HorizontalStepper"
-import Orgstepper from "./components/stepper/orgstepper"
+import SignIn from './components/SignIn';
 import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import Orgin from "./components/mainForm/orgin/orgin";
-import Orginpart from "./components/mainForm/orgin/orgainpart";
-import Orginme from "./components/mainForm/orgin/orgainfas";
-import AboutUs from './components/AboutUs';
+import ForgotPassword from './components/ForgotPassword';
+
+import './App.css';
 
 function App() {
   return (
-    <div className='App'>
-      <Navbar/>
-      <Router>
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/signin' element={<SignIn />} />
-          <Route path='/signup' element={<SignUp />} />
-          <Route path='/aboutus' element={<AboutUs />} />
-          <Route path='/PatientApplication' element={<Stepper />} />
-          <Route path='/OrganisationDetail' element={<Orgstepper />} />
-        </Routes>
-      </Router>
-      <Footer/>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<SignIn/>} />
+        <Route path="/navbar" element={<Navbar/>} />
+        <Route path="/forgotpassword" element={<ForgotPassword/>} />
+      </Routes>
+    </Router>
   );
 }
 
